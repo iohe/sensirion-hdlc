@@ -40,7 +40,7 @@
 //! let msg = [
 //!     chars.fend, 0x01, 0x50, 0x00, 0x00, 0x00, 0x05, 0x80, 0x29, chars.fend,
 //! ];
-//! let cmp = [0x01, 0x50, 0x00, 0x00, 0x00, 0x05, 0x80];
+//! let cmp = [0x01, 0x50, 0x00, 0x00, 0x00, 0x05, 0x80, 0x29];
 //!
 //! let result = decode(&msg, chars).unwrap();
 //!
@@ -132,19 +132,6 @@ impl SpecialChars {
         })
     }
 }
-
-/*
-fn compute_cksum(data: &[u8]) -> u8 {
-    let mut cksum: u8 = 0;
-    for &byte in data.iter() {
-        let val: u16 = cksum as u16 + byte as u16;
-        let lsb = val % 256;
-        cksum = lsb as u8;
-    }
-
-    255 - cksum
-}
-*/
 
 /// Produces escaped (encoded) message surrounded with `FEND`
 ///

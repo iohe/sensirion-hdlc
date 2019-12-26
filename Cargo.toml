@@ -5,7 +5,7 @@ description = "Sensirion HDLC implementation"
 documentation = "https://docs.rs/sensirion-hdlc"
 homepage = "https://github.com/iohe/sensirion-hdlc"
 keywords = ["Sensirion", "HDLC"]
-license = "MIT"
+license = "MIT OR Apache-2.0"
 name = "sensirion-hdlc"
 readme = "README.md"
 repository = "https://github.com/iohe/sensirion-hdlc.git"
@@ -17,5 +17,8 @@ travis-ci = { repository = "iohe/sensirion-hdlc", branch = "master" }
 coveralls = { repository = "iohe/sensirion-hdlc", branch = "master", service = "github" }
 maintenance = { status = "actively-developed" }
 
-[dependencies]
-arrayvec = "0.5.1"
+[dependencies.arrayvec]
+version = "0.5.1"
+default-features = false # do not include the default features, and optionally
+                         # cherry-pick individual features
+features = []
