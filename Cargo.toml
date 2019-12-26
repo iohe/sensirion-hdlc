@@ -1,0 +1,21 @@
+[package]
+authors = ["Ioan Herisanu <ioan.herisanu.dev@gmail.com>"]
+categories = ["no-std"]
+description = "Sensirion HDLC implementation"
+documentation = "https://docs.rs/sensirion-hdlc"
+homepage = "https://github.com/iohe/sensirion-hdlc"
+keywords = ["Sensirion", "HDLC"]
+license = "MIT"
+name = "sensirion-hdlc"
+readme = "README.md"
+repository = "https://github.com/iohe/sensirion-hdlc.git"
+version = "0.1.0"
+edition = "2018"
+
+[badges]
+travis-ci = { repository = "iohe/sensirion-hdlc", branch = "master" }
+coveralls = { repository = "iohe/sensirion-hdlc", branch = "master", service = "github" }
+maintenance = { status = "actively-developed" }
+
+[dependencies]
+arrayvec = "0.5.1"
