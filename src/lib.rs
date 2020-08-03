@@ -133,6 +133,11 @@ impl SpecialChars {
     }
 }
 
+/// Calculate the SHDLC checksum
+pub fn calculate_checksum(data: &[u8]) -> u8 {
+    data.iter().fold(0u8, |acc, x| acc.wrapping_add(*x)) ^ 0xFFu8
+}
+
 /// Produces escaped (encoded) message surrounded with `FEND`
 ///
 /// # Inputs
@@ -327,5 +332,16 @@ mod tests {
         let mosi_data = [0x7e, 0x00, 0x01, 0x00, 0xfe, 0x7e];
         let encoded = decode(&mosi_data, SpecialChars::default()).unwrap();
         assert_eq!(encoded[0..encoded.len()], expected);
+    }
+
+    #[test]
+    fn test_calculate_checksum() {
+        let checksum = calculate_checksum(&[1, 2, 3, 4, 5, 6]);
+        assert_eq!(checksum, 234);
+    }
+    #[test]
+    fn test_calculate_checksum_overflow() {
+        let checksum = calculate_checksum(&[200, 201, 202]);
+        assert_eq!(checksum, 164);
     }
 }
